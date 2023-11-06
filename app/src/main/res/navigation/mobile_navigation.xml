@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    android:label="Novo Deck Anki"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.teachfy.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_reviewFragment"
+            app:destination="@id/reviewFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/navigation_add"
+        android:name="com.example.teachfy.ui.createDeck.CreateDeckFragment"
+        android:label="Add Deck"
+        tools:layout="@layout/fragment_newdeck" />
+
+    <action
+        android:id="@+id/action_to_newDeckAnkiFragment"
+        app:destination="@id/newDeckAnkiFragment" />
+
+
+    <fragment
+        android:id="@+id/navigation_stats"
+        android:name="com.example.teachfy.ui.dashboard.StatsFragment"
+        android:label="Stats"
+        tools:layout="@layout/fragment_stats" />
+    <fragment
+        android:id="@+id/newCardAnkiFragment"
+        android:name="com.example.teachfy.ui.createCard.anki.NewCardAnkiFragment"
+        android:label="Criar Card Anki"
+        tools:layout="@layout/fragment_new_card_anki">
+        <action
+            android:id="@+id/action_newCardAnki"
+            app:destination="@id/newCardAnkiFragment" />
+        <argument
+            android:name="deck_id"
+            app:argType="integer" />
+        <argument android:name="deck_type"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/newDeckAnkiFragment"
+        android:name="com.example.teachfy.ui.createDeck.anki.NewDeckAnkiFragment"
+        android:label="New Deck - Anki"
+        tools:layout="@layout/fragment_new_deck_anki">
+        <action
+            android:id="@+id/action_newDeckAnkiFragment2_to_newCardAnkiFragment"
+            app:destination="@id/newCardAnkiFragment" />
+        <action
+            android:id="@+id/action_newDeckAnkiFragment2_to_generateCardsFragment"
+            app:destination="@id/generateCardsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/generateCardsFragment"
+        android:name="com.example.teachfy.ui.createCard.ia.GenerateCardsFragment"
+        android:label="Gerar Cards por IA"
+        tools:layout="@layout/fragment_generate_cards" />
+    <fragment
+        android:id="@+id/newDeckAvaliativoFragment"
+        android:name="com.example.teachfy.ui.createDeck.avaliativo.NewDeckAvaliativoFragment"
+        android:label="Novo Deck Avaliativo"
+        tools:layout="@layout/fragment_new_deck_avaliativo">
+        <action
+            android:id="@+id/action_newDeckAvaliativoFragment_to_newCardAvaliativoFragment"
+            app:destination="@id/newCardAvaliativoFragment" />
+        <action
+            android:id="@+id/action_newDeckAvaliativoFragment_to_generateCardsFragment"
+            app:destination="@id/generateCardsFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_to_newDeckAvaliativoFragment"
+        app:destination="@id/newDeckAvaliativoFragment" />
+    <fragment
+        android:id="@+id/newCardAvaliativoFragment"
+        android:name="com.example.teachfy.ui.createCard.avaliativo.NewCardAvaliativoFragment"
+        android:label="Criar Card Avaliativo"
+        tools:layout="@layout/fragment_new_card_avaliativo">
+        <action
+            android:id="@+id/action_newCardAvaliativo"
+            app:destination="@id/newCardAvaliativoFragment" />
+        <argument
+            android:name="deck_id"
+            app:argType="integer" />
+        <argument
+            android:name="deck_type"
+            app:argType="integer" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_navigation_home"
+        app:destination="@id/navigation_home" />
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.example.teachfy.ui.review.ReviewFragment"
+        android:label="fragment_review"
+        tools:layout="@layout/fragment_review" >
+        <argument android:name="deck_id"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.teachfy.ui.user.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_loginFragment_to_createAccountFragment"
+            app:destination="@id/createAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="com.example.teachfy.ui.user.CreateAccountFragment"
+        android:label="Criação de Conta"
+        tools:layout="@layout/fragment_create_account">
+        <action
+            android:id="@+id/action_createAccountFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+</navigation>
