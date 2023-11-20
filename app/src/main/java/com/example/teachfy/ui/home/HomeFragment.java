@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment implements DeckAdpter.ItemClickListener {
-
     private FragmentHomeBinding binding;
     private DeckAdpter deckAdpter;
     private List<Deck> decksList;
