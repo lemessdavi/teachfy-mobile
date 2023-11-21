@@ -2,6 +2,9 @@ package com.example.teachfy.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Card {
     private int id;
@@ -11,6 +14,17 @@ public class Card {
     private String question;
     private String answer;
     private Double points;
+
+    private List<String> options = new ArrayList<>();
+
+    public Card() {}
+
+    public Card(int deck_type, String question, String answer, List<String> options) {
+        this.deck_type = deck_type;
+        this.question = question;
+        this.answer = answer;
+        this.options = options;
+    }
 
     public int getId() {
         return id;

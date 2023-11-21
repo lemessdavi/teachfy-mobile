@@ -32,6 +32,13 @@ public class Deck {
         this.porcentagemAcerto = porcentagemAcerto;
     }
 
+    public Deck(String title, String description, int isPublic, int isClonable) {
+        this.name = name;
+        this.description = description;
+        this.publicDeck = isPublic;
+        this.clonable = isClonable;
+    }
+
     public int getUser_id() {
         return user_id;
     }
