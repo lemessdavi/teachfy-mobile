@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -93,7 +94,7 @@ public class HomeFragment extends Fragment implements DeckAdpter.ItemClickListen
 
     @Override
     public void onItemClick(View view, int position, int deck_id) {
-        HomeFragmentDirections.ActionNavigationHomeToReviewFragment action = HomeFragmentDirections.actionNavigationHomeToReviewFragment(deck_id);
+        NavDirections action = HomeFragmentDirections.actionNavigationHomeToAnkiQuestionFragment();
 
         NavController navigation = NavHostFragment.findNavController(HomeFragment.this);
         navigation.navigate(action);

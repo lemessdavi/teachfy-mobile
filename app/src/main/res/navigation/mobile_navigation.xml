@@ -14,6 +14,10 @@
         <action
             android:id="@+id/action_navigation_home_to_reviewFragment"
             app:destination="@id/reviewFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_ankiQuestionFragment"
+            app:destination="@id/ankiQuestionFragment"
+            app:popUpTo="@id/navigation_home" />
     </fragment>
 
 
@@ -98,14 +102,6 @@
         android:id="@+id/action_global_navigation_home"
         app:destination="@id/navigation_home" />
     <fragment
-        android:id="@+id/reviewFragment"
-        android:name="com.example.teachfy.ui.review.ReviewFragment"
-        android:label="fragment_review"
-        tools:layout="@layout/fragment_review" >
-        <argument android:name="deck_id"
-            app:argType="integer" />
-    </fragment>
-    <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.teachfy.ui.user.LoginFragment"
         android:label="Login"
@@ -126,4 +122,36 @@
             android:id="@+id/action_createAccountFragment_to_navigation_home"
             app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/ankiQuestionFragment"
+        android:name="com.example.teachfy.ui.review.Anki.AnkiQuestionFragment"
+        android:label="fragment_anki_question"
+        tools:layout="@layout/fragment_anki_question" >
+        <action
+            android:id="@+id/action_ankiQuestionFragment_to_ankiResponseFragment"
+            app:destination="@id/ankiResponseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ankiResponseFragment"
+        android:name="com.example.teachfy.ui.review.Anki.AnkiResponseFragment"
+        android:label="fragment_anki_response"
+        tools:layout="@layout/fragment_anki_response" >
+        <action
+            android:id="@+id/action_ankiResponseFragment_to_ankiQuestionFragment"
+            app:destination="@id/ankiQuestionFragment" />
+    </fragment>
+    <argument
+        android:name="deck_id"
+        app:argType="integer" />
+    <argument
+        android:name="cards_qtnd"
+        app:argType="integer" />
+    <argument
+        android:name="current_card_id"
+        app:argType="integer" />
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.example.teachfy.ui.review.ReviewFragment"
+        android:label="fragment_review"
+        tools:layout="@layout/fragment_review" />
 </navigation>

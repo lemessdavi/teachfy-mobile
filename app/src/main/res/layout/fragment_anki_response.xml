@@ -34,7 +34,7 @@
         app:layout_constraintHorizontal_bias="0.326"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewResponse"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.431" />
 
     <Button
         android:id="@+id/buttonAcerto"
@@ -46,6 +46,18 @@
         app:layout_constraintHorizontal_bias="0.881"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewResponse"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.431" />
+
+    <Button
+        android:id="@+id/buttonFinalizarRevisaoAnki"
+        android:layout_width="133dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="30dp"
+        android:text="Finalizar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonAcerto"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
