@@ -84,7 +84,7 @@ public class User {
             throw new UserException("Senha maior que 16 caracteres");
         }
 
-        if(!password.matches("^[a-zA-Z0-9]+$")) {
+        if(!password.matches("(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z0-9]+")) {
             throw new UserException("A senha deve conter letras e números");
         }
 

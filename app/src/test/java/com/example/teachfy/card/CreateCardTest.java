@@ -1,11 +1,10 @@
-package com.example.teachfy;
+package com.example.teachfy.card;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.fail;
 
 import com.example.teachfy.exceptions.CardException;
-import com.example.teachfy.exceptions.UserException;
 import com.example.teachfy.models.Card;
 
 import org.junit.Test;
@@ -14,10 +13,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CardTest {
+public class CreateCardTest {
 
     @Test
-    public void deveFalharAoInformarPerguntaInvalida() throws CardException {
+    public void deveFalharAoInformarPerguntaInvalida() {
         int type = 1;
         String question = "";
         String answer = "49";
@@ -30,7 +29,7 @@ public class CardTest {
     }
 
     @Test
-    public void deveFalharAoInformarQuantidadeDeOpcoesDiferenteDeQuatro() throws CardException {
+    public void deveFalharAoInformarQuantidadeDeOpcoesDiferenteDeQuatro() {
         int type = 1;
         String question = "Quanto é 7 x 7?";
         String answer = "49";
@@ -42,7 +41,7 @@ public class CardTest {
     }
 
     @Test
-    public void deveFalharAoNaoInformarResposta() throws CardException {
+    public void deveFalharAoNaoInformarResposta() {
         int type = 1;
         String question = "Quanto é 7 x 7?";
         String answer = "";
@@ -54,7 +53,7 @@ public class CardTest {
     }
 
     @Test
-    public void deveCriarCard() throws CardException {
+    public void deveCriarCard() {
         int type = 1;
         String question = "Quanto é 7 x 7?";
         String answer = "49";
