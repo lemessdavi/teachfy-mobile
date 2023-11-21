@@ -98,7 +98,7 @@ public class NewDeckAnkiFragment extends Fragment {
 
         generate.setOnClickListener(v -> {
             dialog.dismiss();
-            navigator.navigate(R.id.action_newDeckAvaliativoFragment_to_generateCardsFragment);
+            navigator.navigate(R.id.action_newDeckAnkiFragment2_to_generateCardsFragment);
         });
 
     }
