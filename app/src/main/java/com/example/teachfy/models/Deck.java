@@ -1,5 +1,6 @@
 package com.example.teachfy.models;
 
+import com.example.teachfy.exceptions.DeckException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -59,7 +60,10 @@ public class Deck {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws DeckException {
+        if(name.isBlank()) {
+            throw new DeckException("Título inválido");
+        }
         this.name = name;
     }
 
@@ -123,7 +127,10 @@ public class Deck {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description) throws DeckException {
+        if(description.isBlank()) {
+            throw new DeckException("Descrição inválida");
+        }
         this.description = description;
     }
 

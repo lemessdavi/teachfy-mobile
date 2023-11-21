@@ -2,7 +2,10 @@ package com.example.teachfy;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.fail;
 
+
+import com.example.teachfy.exceptions.UserException;
 import com.example.teachfy.models.User;
 
 import org.junit.Test;
@@ -16,9 +19,14 @@ public class UserTest {
         String password = "teste1234";
         String confirmPassword = "teste1234";
 
-        User usuario = new User(name, email, password, confirmPassword);
+        User usuario = new User();
 
-        assertEquals('2', '2');
+        assertThrows(UserException.class, () -> {
+            usuario.setName(name);
+            usuario.setEmail(email);
+            usuario.setPassword(password);
+            usuario.setConfirmPassword(confirmPassword);
+        });
     }
 
     @Test
@@ -28,9 +36,14 @@ public class UserTest {
         String password = "teste1234";
         String confirmPassword = "teste1234";
 
-        User usuario = new User(name, email, password, confirmPassword);
+        User usuario = new User();
 
-        assertEquals('2', '2');
+        assertThrows(UserException.class, () -> {
+            usuario.setName(name);
+            usuario.setEmail(email);
+            usuario.setPassword(password);
+            usuario.setConfirmPassword(confirmPassword);
+        });
     }
 
     @Test
@@ -40,9 +53,14 @@ public class UserTest {
         String password = "teste";
         String confirmPassword = "teste";
 
-        User usuario = new User(name, email, password, confirmPassword);
+        User usuario = new User();
 
-        assertEquals('2', '2');
+        assertThrows(UserException.class, () -> {
+            usuario.setName(name);
+            usuario.setEmail(email);
+            usuario.setPassword(password);
+            usuario.setConfirmPassword(confirmPassword);
+        });
     }
 
     @Test
@@ -52,9 +70,14 @@ public class UserTest {
         String password = "teste1234";
         String confirmPassword = "teste";
 
-        User usuario = new User(name, email, password, confirmPassword);
+        User usuario = new User();
 
-        assertEquals('2', '2');
+        assertThrows(UserException.class, () -> {
+            usuario.setName(name);
+            usuario.setEmail(email);
+            usuario.setPassword(password);
+            usuario.setConfirmPassword(confirmPassword);
+        });
     }
 
     @Test
@@ -64,9 +87,14 @@ public class UserTest {
         String password = "testeTesteTeste1234";
         String confirmPassword = "testeTesteTeste1234";
 
-        User usuario = new User(name, email, password, confirmPassword);
+        User usuario = new User();
 
-        assertEquals('2', '2');
+        assertThrows(UserException.class, () -> {
+            usuario.setName(name);
+            usuario.setEmail(email);
+            usuario.setPassword(password);
+            usuario.setConfirmPassword(confirmPassword);
+        });
     }
 
     @Test
@@ -76,88 +104,113 @@ public class UserTest {
         String password = "teste1234";
         String confirmPassword = "teste1234";
 
-        User usuario = new User(name, email, password, confirmPassword);
+        User usuario = new User();
 
-        assertEquals('2', '2');
+        try {
+            usuario.setName(name);
+            usuario.setEmail(email);
+            usuario.setPassword(password);
+            usuario.setConfirmPassword(confirmPassword);
+        } catch(UserException e) {
+            fail("Falha na criação do Usuário");
+        }
     }
 
     @Test
-    public void deveFalharAoInformarNovoNomeInvalido() {
+    public void deveFalharAoInformarNovoNomeInvalido() throws UserException {
         String name = "Cauê";
         String email = "caue@gmail.com";
         String password = "teste1234";
         String confirmPassword = "teste1234";
 
-        User usuario = new User(name, email, password, confirmPassword);
+        User usuario = new User();
+        usuario.setName(name);
+        usuario.setEmail(email);
+        usuario.setPassword(password);
+        usuario.setConfirmPassword(confirmPassword);
 
         String newName = "";
         String newPassword = "novoteste1234";
         String newConfirmPassword = "novoteste1234";
 
-        usuario.setName(newName);
-        usuario.setPassword(newPassword);
-        usuario.setConfirmPassword(newConfirmPassword);
-
-        assertEquals('2', '2');
+        assertThrows(UserException.class, () -> {
+            usuario.setName(newName);
+            usuario.setEmail(newPassword);
+            usuario.setPassword(newConfirmPassword);
+        });
     }
 
     @Test
-    public void deveFalharAoInformarNovaSenhaInvalida() {
+    public void deveFalharAoInformarNovaSenhaInvalida() throws UserException {
         String name = "Cauê";
         String email = "caue@gmail.com";
         String password = "teste1234";
         String confirmPassword = "teste1234";
 
-        User usuario = new User(name, email, password, confirmPassword);
+        User usuario = new User();
+        usuario.setName(name);
+        usuario.setEmail(email);
+        usuario.setPassword(password);
+        usuario.setConfirmPassword(confirmPassword);
 
         String newName = "Cauê Marques";
         String newPassword = "novoteste";
         String newConfirmPassword = "novoteste";
 
-        usuario.setName(newName);
-        usuario.setPassword(newPassword);
-        usuario.setConfirmPassword(newConfirmPassword);
-
-        assertEquals('2', '2');
+        assertThrows(UserException.class, () -> {
+            usuario.setName(newName);
+            usuario.setEmail(newPassword);
+            usuario.setPassword(newConfirmPassword);
+        });
     }
 
     @Test
-    public void deveFalharAoInformarNovaConfirmacaoDeSenhaInvalida() {
+    public void deveFalharAoInformarNovaConfirmacaoDeSenhaInvalida() throws UserException {
         String name = "Cauê";
         String email = "caue@gmail.com";
         String password = "teste1234";
         String confirmPassword = "teste1234";
 
-        User usuario = new User(name, email, password, confirmPassword);
+        User usuario = new User();
+        usuario.setName(name);
+        usuario.setEmail(email);
+        usuario.setPassword(password);
+        usuario.setConfirmPassword(confirmPassword);
 
         String newName = "Cauê Marques";
         String newPassword = "novoteste1234";
         String newConfirmPassword = "novoteste";
 
-        usuario.setName(newName);
-        usuario.setPassword(newPassword);
-        usuario.setConfirmPassword(newConfirmPassword);
-
-        assertEquals('2', '2');
+        assertThrows(UserException.class, () -> {
+            usuario.setName(newName);
+            usuario.setEmail(newPassword);
+            usuario.setPassword(newConfirmPassword);
+        });
     }
 
     @Test
-    public void deveAtualizarUsuario() {
+    public void deveAtualizarUsuario() throws UserException {
         String name = "Cauê";
         String email = "caue@gmail.com";
         String password = "teste1234";
         String confirmPassword = "teste1234";
 
-        User usuario = new User(name, email, password, confirmPassword);
+        User usuario = new User();
+        usuario.setName(name);
+        usuario.setEmail(email);
+        usuario.setPassword(password);
+        usuario.setConfirmPassword(confirmPassword);
 
         String newName = "Cauê Marques";
         String newPassword = "novoteste1234";
         String newConfirmPassword = "novoteste1234";
 
-        usuario.setName(newName);
-        usuario.setPassword(newPassword);
-        usuario.setConfirmPassword(newConfirmPassword);
-
-        assertEquals('2', '2');
+        try {
+            usuario.setName(newName);
+            usuario.setPassword(newPassword);
+            usuario.setConfirmPassword(newConfirmPassword);
+        } catch (UserException e) {
+            fail("Falha na criação do Usuário");
+        }
     }
 }

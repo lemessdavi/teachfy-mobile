@@ -1,5 +1,6 @@
 package com.example.teachfy.models;
 
+import com.example.teachfy.exceptions.CardException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.ArrayList;
@@ -19,11 +20,14 @@ public class Card {
 
     public Card() {}
 
-    public Card(int deck_type, String question, String answer, List<String> options) {
-        this.deck_type = deck_type;
-        this.question = question;
-        this.answer = answer;
-        this.options = options;
+    public Card(int deck_type, String question, String answer, List<String> options) throws CardException {
+        setType(deck_type);
+        setQuestion(question);
+        setAnswer(answer);
+
+        if(options.size() != 4) {
+            throw new CardException("Quantida de opções diferente de 4");
+        }
     }
 
     public int getId() {
@@ -62,7 +66,10 @@ public class Card {
         return question;
     }
 
-    public void setQuestion(String question) {
+    public void setQuestion(String question) throws CardException {
+        if(question.isBlank()) {
+            throw new CardException("Pergunta inválida");
+        }
         this.question = question;
     }
 
@@ -70,7 +77,10 @@ public class Card {
         return answer;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(String answer) throws CardException {
+        if(answer.isBlank()) {
+            throw new CardException("Resposta inválida");
+        }
         this.answer = answer;
     }
 
