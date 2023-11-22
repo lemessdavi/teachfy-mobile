@@ -40,16 +40,16 @@ public class AnkiResponseFragment extends Fragment {
         Button acerto = view.findViewById(R.id.buttonAcerto);
 
         acerto.setOnClickListener( v ->{
-            NavDirections action = AnkiResponseFragmentDirections.actionAnkiResponseFragmentToAnkiQuestionFragment();
-
-            NavHostFragment.findNavController(this).navigate(action);
+//            NavDirections action = AnkiResponseFragmentDirections.actionAnkiResponseFragmentToAnkiQuestionFragment();
+//
+//            NavHostFragment.findNavController(this).navigate(action);
         });
 
 
         errei.setOnClickListener( v ->{
-            NavDirections action = AnkiResponseFragmentDirections.actionAnkiResponseFragmentToAnkiQuestionFragment();
-
-            NavHostFragment.findNavController(this).navigate(action);
+//            NavDirections action = AnkiResponseFragmentDirections.actionAnkiResponseFragmentToAnkiQuestionFragment();
+//
+//            NavHostFragment.findNavController(this).navigate(action);
         });
 
 

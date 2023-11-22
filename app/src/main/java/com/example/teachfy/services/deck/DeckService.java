@@ -17,7 +17,4 @@ public interface DeckService {
 
     @POST("decks")
     Call<PostDeckResponse> createDeck(@Header("authorization") String token, @Body PostDeckRequest deck );
-
-    //    @GET("decks/{id}")
-    //    Call<DeckDTO> getDeck(@Path("id") int deckId);
 }
