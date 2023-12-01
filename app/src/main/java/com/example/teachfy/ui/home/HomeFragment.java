@@ -94,7 +94,6 @@ public class HomeFragment extends Fragment implements DeckAdpter.ItemClickListen
         return decks;
     }
 
-
     @Override
     public void onItemClick(View view, int position, int deck_id) {
         GetAllFromDeck getAllFromDeck = new GetAllFromDeck();
