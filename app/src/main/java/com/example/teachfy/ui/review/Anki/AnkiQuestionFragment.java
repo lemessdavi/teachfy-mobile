@@ -15,8 +15,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.teachfy.R;
+import com.example.teachfy.services.review.response.GetAllFromDeckResponse;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AnkiQuestionFragment extends Fragment {
 
@@ -37,9 +43,16 @@ public class AnkiQuestionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Button verResposta = view.findViewById(R.id.buttonVerResposta);
+        TextView question = view.findViewById(R.id.textViewQuestion);
 
+        List<GetAllFromDeckResponse.Card> cards = new ArrayList<>(Arrays.asList(AnkiQuestionFragmentArgs.fromBundle(getArguments()).getCards()));
+
+        GetAllFromDeckResponse.Card card = cards.remove(0);
+        question.setText(card.getQuestion());
+
+        GetAllFromDeckResponse.Card[] cardsVetor = cards.toArray(new GetAllFromDeckResponse.Card[0]);
         verResposta.setOnClickListener(v -> {
-            NavDirections action =  AnkiQuestionFragmentDirections.actionAnkiQuestionFragmentToAnkiResponseFragment();
+            NavDirections action =  AnkiQuestionFragmentDirections.actionAnkiQuestionFragmentToAnkiResponseFragment(cardsVetor, card.getAnswer());
 
             NavHostFragment.findNavController(this).navigate(action);
         });
@@ -49,8 +62,6 @@ public class AnkiQuestionFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(AnkiQuestionViewModel.class);
-
-
     }
 
 }

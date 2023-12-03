@@ -130,6 +130,9 @@
         <action
             android:id="@+id/action_ankiQuestionFragment_to_ankiResponseFragment"
             app:destination="@id/ankiResponseFragment" />
+        <argument
+            android:name="cards"
+            app:argType="com.example.teachfy.services.review.response.GetAllFromDeckResponse$Card[]" />
     </fragment>
     <fragment
         android:id="@+id/ankiResponseFragment"
@@ -139,6 +142,12 @@
         <action
             android:id="@+id/action_ankiResponseFragment_to_ankiQuestionFragment"
             app:destination="@id/ankiQuestionFragment" />
+        <argument
+            android:name="cards"
+            app:argType="com.example.teachfy.services.review.response.GetAllFromDeckResponse$Card[]" />
+        <argument
+            android:name="resposta"
+            app:argType="string" />
     </fragment>
     <argument
         android:name="deck_id"

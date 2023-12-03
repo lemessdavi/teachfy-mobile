@@ -1,5 +1,10 @@
 package com.example.teachfy.services.review.response;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,19 +35,12 @@ public class GetAllFromDeckResponse {
         return data;
     }
 
-    public void setData(List<Data> data) {
-        this.data = data;
+    public List<Card> getCards(){
+        return getData().get(0).getCards();
     }
 
-    public String getJsonString() {
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
-            return objectMapper.writeValueAsString(this);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "{}";
-        }
+    public void setData(List<Data> data) {
+        this.data = data;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -80,11 +78,9 @@ public class GetAllFromDeckResponse {
         @JsonProperty("description")
         private String description;
 
-        @JsonIgnore
         @JsonProperty("cards")
         private List<Card> cards;
 
-        @JsonIgnore
         @JsonProperty("options")
         private List<Option> options;
 
@@ -194,9 +190,8 @@ public class GetAllFromDeckResponse {
             this.options = options;
         }
     }
-
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Card {
+    public static class Card implements Parcelable {
         @JsonProperty("id")
         private int id;
 
@@ -225,6 +220,34 @@ public class GetAllFromDeckResponse {
         private String updatedAt;
 
         // Getters e setters
+
+        public Card(){
+
+        }
+
+        protected Card(Parcel in) {
+            id = in.readInt();
+            deckId = in.readInt();
+            deckType = in.readInt();
+            cardType = in.readInt();
+            question = in.readString();
+            answer = in.readString();
+            points = in.readString();
+            createdAt = in.readString();
+            updatedAt = in.readString();
+        }
+
+        public static final Creator<Card> CREATOR = new Creator<Card>() {
+            @Override
+            public Card createFromParcel(Parcel in) {
+                return new Card(in);
+            }
+
+            @Override
+            public Card[] newArray(int size) {
+                return new Card[size];
+            }
+        };
 
         public int getId() {
             return id;
@@ -296,6 +319,24 @@ public class GetAllFromDeckResponse {
 
         public void setUpdatedAt(String updatedAt) {
             this.updatedAt = updatedAt;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(@NonNull Parcel dest, int flags) {
+            dest.writeInt(id);
+            dest.writeInt(deckId);
+            dest.writeInt(deckType);
+            dest.writeInt(cardType);
+            dest.writeString(question);
+            dest.writeString(answer);
+            dest.writeString(points);
+            dest.writeString(createdAt);
+            dest.writeString(updatedAt);
         }
     }
 

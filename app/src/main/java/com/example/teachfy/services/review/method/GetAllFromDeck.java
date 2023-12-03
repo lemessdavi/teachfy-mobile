@@ -20,17 +20,17 @@ import retrofit2.Call;
 public class GetAllFromDeck {
 
 
-    public String getAllFromDeck(int deck_id){
+    public GetAllFromDeckResponse getAllFromDeck(int deck_id){
         RetrofitInitializer api = new RetrofitInitializer();
 
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-        Future<String> cardFuture = executorService.submit(() -> {
+        Future<GetAllFromDeckResponse> cardFuture = executorService.submit(() -> {
             Call<GetAllFromDeckResponse> call = api.reviewService().getAllFromDeck(User.getLogedToken(), deck_id);
             try {
                 GetAllFromDeckResponse response = call.execute().body();
                 if (response != null) {
-                    return response.getJsonString();
+                    return response;
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -39,7 +39,7 @@ public class GetAllFromDeck {
         });
 
         // Aguarde a conclusão da tarefa assíncrona e obtenha o resultado
-        String data = null;
+        GetAllFromDeckResponse data = null;
         try {
             data = cardFuture.get();
         } catch (InterruptedException | ExecutionException e) {
@@ -48,6 +48,6 @@ public class GetAllFromDeck {
 
         executorService.shutdown();
 
-        return data.toString();
+        return data;
     }
 }

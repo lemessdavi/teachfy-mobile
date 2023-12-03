@@ -18,8 +18,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.teachfy.R;
 import com.example.teachfy.adapters.DeckAdpter;
 import com.example.teachfy.databinding.FragmentHomeBinding;
+import com.example.teachfy.models.Card;
 import com.example.teachfy.models.Deck;
 import com.example.teachfy.services.deck.methods.GetDecks;
+import com.example.teachfy.services.review.method.GetAllFromDeck;
+import com.example.teachfy.services.review.response.GetAllFromDeckResponse;
 import com.example.teachfy.ui.createCard.anki.NewCardAnkiFragment;
 
 import java.util.ArrayList;
@@ -91,10 +94,14 @@ public class HomeFragment extends Fragment implements DeckAdpter.ItemClickListen
         return decks;
     }
 
-
     @Override
     public void onItemClick(View view, int position, int deck_id) {
-        NavDirections action = HomeFragmentDirections.actionNavigationHomeToAnkiQuestionFragment();
+        GetAllFromDeck getAllFromDeck = new GetAllFromDeck();
+        GetAllFromDeckResponse data = getAllFromDeck.getAllFromDeck(deck_id);
+        List<GetAllFromDeckResponse.Card> cardsList = data.getCards();
+        GetAllFromDeckResponse.Card[] cards = cardsList.toArray(new GetAllFromDeckResponse.Card[0]);
+
+        NavDirections action = HomeFragmentDirections.actionNavigationHomeToAnkiQuestionFragment(cards);
 
         NavController navigation = NavHostFragment.findNavController(HomeFragment.this);
         navigation.navigate(action);
