@@ -29,7 +29,6 @@ public class DeckTest {
 
     @Test
     public void deveCriarDeck() {
-
         criarUsuarioInicial();
 
         Espresso.onView(ViewMatchers.withId(R.id.textInputEmailLogin)).perform(ViewActions.replaceText("davi@email.com"));
